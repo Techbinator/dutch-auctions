@@ -1,3 +1,4 @@
+@import "./config/scss/general.scss";
 html {
   box-sizing: border-box;
 }
@@ -9,10 +10,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f1f1ef;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+input {
+  width: 100%;
+  display: block;
+  margin: 2.5% 0;
+  font-size: 15px;
+  padding: 10px;
+  box-sizing: border-box;
 }
