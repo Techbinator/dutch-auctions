@@ -1,0 +1,65 @@
+@import "../config/variables.scss";
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  background: white;
+  padding: 0.3% 3%;
+  .logo {
+    font-size: 2em;
+    color: $primary;
+    font-weight: bold;
+    span {
+      color: $secondary;
+    }
+  }
+  .navbar-toggle {
+    font-size: 2em;
+    cursor: pointer;
+    color: $primary;
+    display: none;
+  }
+  nav {
+    margin-top: 10px;
+  }
+  .navbar-toggle {
+    margin-top: 4px;
+  }
+  nav {
+    display: flex;
+    a {
+      text-decoration: none;
+      font-size: 1em;
+      padding-left: 5%;
+      white-space: nowrap;
+      color: #000;
+      &.active,
+      &:hover {
+        color: $hover;
+      }
+      .svg-inline--fa {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      display: none;
+      a {
+        padding: 5px 0;
+        font-size: 1.1em;
+        border-top: 1px solid #ccc;
+      }
+      &.active {
+        display: flex;
+      }
+    }
+    .navbar-toggle {
+      display: flex;
+    }
+  }
+}
