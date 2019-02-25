@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import "./MainContainer.scss";
-import Header from "../components/Header";
+import Header from "./Header";
 interface IMainContainer {
   isLogedIn: boolean;
   children: ReactNode;

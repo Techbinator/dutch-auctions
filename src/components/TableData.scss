@@ -1,0 +1,15 @@
+.table-data {
+  span {
+    width: 50%;
+    display: inline-block;
+    font-size: 1em;
+    &:first-child {
+      color: #999;
+    }
+    &:last-child {
+      color: #000;
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+}
