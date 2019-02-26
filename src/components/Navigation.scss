@@ -1,0 +1,36 @@
+@import "../config/scss/variables.scss";
+nav {
+  display: flex;
+  margin-top: 10px;
+  min-width: 300px;
+  a {
+    text-decoration: none;
+    font-size: 1em;
+    padding-left: 5%;
+    white-space: nowrap;
+    color: #000;
+    &.active,
+    &:hover {
+      color: $hover;
+    }
+    .svg-inline--fa {
+      margin-right: 5px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    display: none;
+    a {
+      padding: 5px 0;
+      font-size: 1.1em;
+      border-top: 1px solid #ccc;
+    }
+    &.active {
+      display: flex;
+    }
+  }
+}
