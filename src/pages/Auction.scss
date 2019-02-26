@@ -1,0 +1,43 @@
+@import "../config/scss/variables.scss";
+.auction {
+  .top {
+    display: flex;
+    flex-direction: row;
+    .left-container {
+      width: 65%;
+      margin-right: 3%;
+      .animated-background {
+        min-height: 300px;
+      }
+    }
+    .right-container {
+      width: 32%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .title {
+        font-size: 1.7em;
+        color: $primary;
+      }
+      .table-data {
+        font-size: 1em;
+      }
+      .price {
+        input {
+          font-size: 1.7em;
+          text-align: right;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .top {
+      display: block;
+      .left-container,
+      .right-container {
+        width: 100%;
+        margin: 2% 0;
+      }
+    }
+  }
+}

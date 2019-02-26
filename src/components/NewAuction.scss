@@ -1,0 +1,13 @@
+@import "../config/scss/variables.scss";
+@import "./AuctionListItem.scss";
+.new-auction {
+  @extend .auction-list-item;
+  .icon-container {
+    min-height: 142px;
+    width: 100%;
+    text-align: center;
+    font-size: 4em;
+    padding-top: 35px;
+    color: $secondary;
+  }
+}
