@@ -2,7 +2,7 @@
 .auction-list-item {
   background-color: #fff;
   padding: 10px;
-  width: 31%;
+  width: 31.33333%;
   margin: 1%;
   text-decoration: none;
   user-select: none;
@@ -11,25 +11,6 @@
   }
   &:hover {
     opacity: 0.96;
-  }
-  .title {
-    color: $hover;
-    font-size: 1.5em;
-  }
-  .table-data {
-    span {
-      width: 50%;
-      display: inline-block;
-      font-size: 1em;
-      &:first-child {
-        color: #999;
-      }
-      &:last-child {
-        color: #000;
-        font-weight: bold;
-        text-align: right;
-      }
-    }
   }
   @media only screen and (max-width: 1024px) {
     width: 48%;

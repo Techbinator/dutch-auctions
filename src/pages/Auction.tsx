@@ -1,14 +1,16 @@
 import React from "react";
 import TableData from "../components/TableData";
 import Bids from "../components/Bids";
+import { withAuthorization } from "../firebase/withAuthorization";
+
 import "./Auction.scss";
 
-export default () => {
+const Auction = () => {
   return (
     <div className="auction">
       <div className="top">
         <div className="left-container box-shadow">
-          <div className="animated-background" />
+          <div className="dummy-image" />
         </div>
         <div className="right-container">
           <div className="title">Product name</div>
@@ -27,3 +29,5 @@ export default () => {
     </div>
   );
 };
+
+export default withAuthorization(true)(Auction);

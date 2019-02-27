@@ -6,7 +6,6 @@ import MainContainer from "./components/MainContainer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuctionsList from "./pages/AuctionsList";
-import MyAuctionsList from "./pages/MyAuctionsList";
 import Auction from "./pages/Auction";
 import { User } from "firebase";
 
@@ -21,7 +20,11 @@ class App extends React.Component<{ authUser: User }> {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/auctions" component={AuctionsList} />
-            <Route exact path="/my_auctions" component={MyAuctionsList} />
+            <Route
+              exact
+              path="/my_auctions"
+              component={() => <AuctionsList currentUserAuctions />}
+            />
             <Route exact path="/auction" component={Auction} />
           </Switch>
         </MainContainer>

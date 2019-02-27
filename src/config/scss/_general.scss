@@ -14,19 +14,14 @@
 
 @keyframes placeHolderShimmer {
   0% {
-    background-position: -468px 0;
+    background-position: -10000px 0;
   }
   100% {
-    background-position: 468px 0;
+    background-position: 10000px 0;
   }
 }
 
-.animated-background {
-  animation-duration: 9s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
-  animation-timing-function: linear;
+.dummy-image {
   background: #f6f7f8;
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 100%;
@@ -40,4 +35,8 @@
   flex-wrap: wrap;
   align-content: stretch;
   justify-content: normal;
+}
+
+.error {
+  color: red !important;
 }
