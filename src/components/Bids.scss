@@ -6,13 +6,13 @@
   margin-top: 3em;
   padding-top: 2em;
   .title {
-    width: 30%;
-    margin-right: 5%;
+    flex: 1;
+    margin-right: 3%;
     font-size: 1.3em;
     margin-top: 10px;
   }
   .bids-info {
-    width: 65%;
+    flex: 3;
     .bid {
       display: flex;
       flex-direction: row;

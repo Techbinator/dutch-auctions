@@ -25,7 +25,8 @@ class App extends React.Component<{ authUser: User }> {
               path="/my_auctions"
               component={() => <AuctionsList currentUserAuctions />}
             />
-            <Route exact path="/auction" component={Auction} />
+            <Route exact path="/auction/:id" component={Auction} />
+            <Route component={Login} />
           </Switch>
         </MainContainer>
       </BrowserRouter>

@@ -10,7 +10,6 @@ export const getAuctions = ({
   currentUserAuctions
 }: IGetAuctions) => {
   let auctions = db.collection("auctions").orderBy("endDate", "desc");
-  console.log("here");
   if (authUser && currentUserAuctions) {
     auctions = auctions.where(
       "ownerId",
@@ -20,6 +19,10 @@ export const getAuctions = ({
   }
 
   return auctions;
+};
+
+export const getAuction = ({ id }: { id: string }) => {
+  return db.collection("auctions").doc(id);
 };
 
 interface ICreateNewAuction {
@@ -39,10 +42,7 @@ export const createNewAuction = (data: ICreateNewAuction) => {
     startingBid: data.startingBid,
     ownerId: data.ownerId,
     currentMaxBid: 0,
-    maxBidder: {
-      email: "",
-      Id: ""
-    }
+    maxBidderId: ""
   };
   return db.collection("auctions").add(auction);
 };

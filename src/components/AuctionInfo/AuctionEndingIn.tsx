@@ -3,10 +3,15 @@ import Countdown from "react-countdown-now";
 
 import TableData from "../TableData";
 
+interface IAuctionEndingIn {
+  endDate: number;
+  auctionEnded: boolean;
+}
+
 const AuctionComplete = () => <span className="error">Auction ended</span>;
 
-function renderEndDate(endDate: number) {
-  if (endDate < new Date().getTime()) {
+function renderEndDate(endDate: number, auctionEnded: boolean) {
+  if (endDate < new Date().getTime() || auctionEnded) {
     return <AuctionComplete />;
   }
   return (
@@ -16,6 +21,6 @@ function renderEndDate(endDate: number) {
   );
 }
 
-export default ({ endDate }: { endDate: number }) => (
-  <TableData value={renderEndDate(endDate)} title="Ending in" />
+export default ({ endDate, auctionEnded }: IAuctionEndingIn) => (
+  <TableData value={renderEndDate(endDate, auctionEnded)} title="Ending in" />
 );
