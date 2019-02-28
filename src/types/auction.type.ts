@@ -1,13 +1,17 @@
 export interface IAuction {
-  id?: string;
+  id: string;
   title: string;
   startDate: number;
   endDate: number;
   ownerId: string;
   startingBid: number;
   currentMaxBid: number;
-  maxBidder: {
-    id: string;
-    email: string;
-  };
+}
+
+export interface IBid {
+  id: string;
+  amount: number;
+  auctionId: string;
+  createdAt: number;
+  userEmail: string;
 }

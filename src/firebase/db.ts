@@ -1,15 +1,21 @@
 import { db } from "./config";
-import { User, firestore } from "firebase";
+import { firestore } from "firebase";
 
-interface IGetAuctions {
-  authUser: User;
-  currentUserAuctions: boolean;
-}
+import {
+  IGetAuctions,
+  ICreateNewAuction,
+  ISubmitBid,
+  ISubmitBidToAuction
+} from "../types/db.types";
+
+const AUCTIONS_COLLECTION = "auctions";
+const BIDS_COLLECTION = "bids";
+
 export const getAuctions = ({
   authUser,
   currentUserAuctions
 }: IGetAuctions) => {
-  let auctions = db.collection("auctions").orderBy("endDate", "desc");
+  let auctions = db.collection(AUCTIONS_COLLECTION).orderBy("endDate", "desc");
   if (authUser && currentUserAuctions) {
     auctions = auctions.where(
       "ownerId",
@@ -22,18 +28,20 @@ export const getAuctions = ({
 };
 
 export const getAuction = ({ id }: { id: string }) => {
-  return db.collection("auctions").doc(id);
+  return db.collection(AUCTIONS_COLLECTION).doc(id);
 };
 
-interface ICreateNewAuction {
-  title: string;
-  startingBid: number;
-  ownerId: string;
-}
+export const getBidsById = ({ id }: { id: string }) => {
+  return db
+    .collection(BIDS_COLLECTION)
+    .where("auctionId", "==", id)
+    .orderBy("amount", "desc")
+    .orderBy("createdAt", "asc");
+};
 
 export const createNewAuction = (data: ICreateNewAuction) => {
-  var startDate = new Date();
-  var endDate = new Date();
+  const startDate = new Date();
+  const endDate = new Date();
   endDate.setMinutes(endDate.getMinutes() + 5);
   const auction = {
     title: data.title,
@@ -41,8 +49,24 @@ export const createNewAuction = (data: ICreateNewAuction) => {
     endDate: endDate.getTime(),
     startingBid: data.startingBid,
     ownerId: data.ownerId,
-    currentMaxBid: 0,
-    maxBidderId: ""
+    currentMaxBid: 0
   };
-  return db.collection("auctions").add(auction);
+  return db.collection(AUCTIONS_COLLECTION).add(auction);
+};
+
+export const submitBid = (data: ISubmitBid) => {
+  const createdAt = new Date().getTime();
+  const processedData = {
+    ...data,
+    createdAt
+  };
+
+  return db.collection(BIDS_COLLECTION).add({ ...processedData });
+};
+
+export const submitBidToAuction = (data: ISubmitBidToAuction) => {
+  return db
+    .collection(AUCTIONS_COLLECTION)
+    .doc(data.auctionId)
+    .update({ currentMaxBid: data.amount });
 };

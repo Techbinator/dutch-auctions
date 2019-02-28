@@ -1,20 +1,31 @@
 import React from "react";
 import "./Bids.scss";
+import { IBid } from "../types/auction.type";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
-export default () => (
+const Bid = ({ bid, isFirst }: { bid: IBid; isFirst: boolean }) => {
+  const { userEmail, amount, createdAt } = bid;
+  const formatedCreatedAt = new Date(createdAt).toString();
+  return (
+    <div className="bid">
+      <span>
+        {isFirst && <FontAwesomeIcon icon={faTrophy} />}
+        {userEmail}
+      </span>
+      <span>{amount}</span>
+      <span>{formatedCreatedAt}</span>
+    </div>
+  );
+};
+
+export default ({ bids }: { bids: IBid[] }) => (
   <div className="bids-container">
-    <div className="title">Bids (12)</div>
+    <div className="title">Bids ({bids.length})</div>
     <div className="bids-info">
-      <div className="bid">
-        <span>Name</span>
-        <span>71.00</span>
-        <span>18. Feb. 2019, 14:40</span>
-      </div>
-      <div className="bid">
-        <span>Name</span>
-        <span>71.00</span>
-        <span>18. Feb. 2019, 14:40</span>
-      </div>
+      {bids.map((bid, index) => (
+        <Bid isFirst={index === 0} key={bid.id} bid={bid} />
+      ))}
     </div>
   </div>
 );

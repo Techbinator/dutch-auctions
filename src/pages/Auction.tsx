@@ -4,9 +4,10 @@ import { RouteComponentProps } from "react-router-dom";
 
 import Bids from "../components/Bids";
 import { withAuthorization } from "../firebase/withAuthorization";
-import { IAuction } from "../types/auction.type";
+import { IAuction, IBid } from "../types/auction.type";
 import { db } from "../firebase";
 import AuctionInfo from "../components/AuctionInfo";
+import SubmitBid from "../components/SubmitBid";
 
 import "./Auction.scss";
 
@@ -15,25 +16,25 @@ interface IAuctionProps {
 }
 interface IAuctionState {
   auction: IAuction | null;
+  bids: IBid[];
 }
 
 class Auction extends React.Component<
-  IAuctionProps & RouteComponentProps<{ id: string }>,
-  IAuctionState
+  IAuctionProps & RouteComponentProps<{ id: string }>
 > {
-  state = {
-    auction: null
+  state: IAuctionState = {
+    auction: null,
+    bids: []
   };
 
   _isMounted: boolean = false;
 
-  componentDidMount = () => {
-    this._isMounted = true;
+  getAuctionData = () => {
     const { history, match } = this.props;
-
     db.getAuction({ id: match.params.id }).onSnapshot(doc => {
       if (doc.exists) {
-        const auction = doc.data() as IAuction;
+        const auctionData = doc.data() as IAuction;
+        const auction = { ...auctionData, id: doc.id };
         this.setState({ auction });
         return;
       }
@@ -42,13 +43,35 @@ class Auction extends React.Component<
     });
   };
 
+  getBidsData = () => {
+    const { match } = this.props;
+    db.getBidsById({ id: match.params.id }).onSnapshot(snapshot => {
+      const bids: IBid[] = [];
+
+      snapshot.forEach(doc => {
+        const auctionData = doc.data() as IBid;
+        bids.push({ id: doc.id, ...auctionData });
+      });
+
+      if (this._isMounted) {
+        this.setState({ bids });
+      }
+    });
+  };
+
+  componentDidMount = () => {
+    this._isMounted = true;
+    this.getAuctionData();
+    this.getBidsData();
+  };
+
   componentWillUnmount() {
     this._isMounted = false;
   }
 
   render() {
-    const { auction } = this.state;
-
+    const { auction, bids } = this.state;
+    const { authUser } = this.props;
     return (
       <div className="auction">
         <div className="top">
@@ -57,20 +80,21 @@ class Auction extends React.Component<
           </div>
           <div className="right-container">
             {auction ? <AuctionInfo {...auction} /> : "Loading..."}
-            <form className="price">
-              <input
-                type="number"
-                min="1"
-                max="10000000"
-                step="0.01"
-                maxLength={9}
+            {auction ? (
+              <SubmitBid
+                userId={authUser.uid}
+                userEmail={authUser.email}
+                minPrice={auction.currentMaxBid}
+                maxPrice={auction.startingBid}
+                auctionId={auction.id}
               />
-              <button type="submit">Submit</button>
-            </form>
+            ) : (
+              "Loading..."
+            )}
           </div>
         </div>
         <div className="bottom">
-          <Bids />
+          <Bids bids={bids} />
         </div>
       </div>
     );

@@ -1,0 +1,11 @@
+.price {
+  input {
+    font-size: 1.7em;
+    text-align: right;
+  }
+
+  button:disabled,
+  button[disabled] {
+    background: #ccc;
+  }
+}

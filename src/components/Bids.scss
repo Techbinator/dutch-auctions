@@ -15,10 +15,15 @@
     flex: 3;
     .bid {
       display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
       border-bottom: 1px solid #ccc;
       padding: 10px 0;
+      span {
+        flex: 1;
+        .fa-trophy {
+          margin-right: 3px;
+          color: green;
+        }
+      }
     }
   }
 }
