@@ -79,14 +79,12 @@ class Auction extends React.Component<
             <div className="dummy-image" />
           </div>
           <div className="right-container">
-            {auction ? <AuctionInfo {...auction} /> : "Loading..."}
+            {auction ? <AuctionInfo auction={auction} /> : "Loading..."}
             {auction ? (
               <SubmitBid
                 userId={authUser.uid}
                 userEmail={authUser.email}
-                minPrice={auction.currentMaxBid}
-                maxPrice={auction.startingBid}
-                auctionId={auction.id}
+                auction={auction}
               />
             ) : (
               "Loading..."

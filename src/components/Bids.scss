@@ -19,11 +19,18 @@
       padding: 10px 0;
       span {
         flex: 1;
+        text-align: center;
         .fa-trophy {
           margin-right: 3px;
           color: green;
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bids-container {
+    flex-direction: column;
   }
 }

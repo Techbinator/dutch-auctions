@@ -5,7 +5,7 @@ import { IAuction } from "../types/auction.type";
 
 import "./AuctionListItem.scss";
 
-export default (auction: IAuction) => {
+export default ({ auction }: { auction: IAuction }) => {
   const { id } = auction;
   return (
     <NavLink
@@ -14,7 +14,7 @@ export default (auction: IAuction) => {
       to={`auction/${id}`}
     >
       <div className="dummy-image" />
-      <AuctionInfo {...auction} />
+      <AuctionInfo auction={auction} />
     </NavLink>
   );
 };

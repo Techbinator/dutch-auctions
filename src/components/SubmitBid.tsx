@@ -3,13 +3,12 @@ import { db } from "../firebase";
 import Button from "../components/Button";
 
 import "./SubmitBid.scss";
+import { IAuction } from "../types/auction.type";
 
 interface SubmitBidProps {
   userId: string;
   userEmail?: string | null;
-  minPrice: number;
-  maxPrice: number;
-  auctionId: string;
+  auction: IAuction;
 }
 
 interface ISubmitBidState {
@@ -42,7 +41,8 @@ export default class SubmitBid extends React.Component<
     event.preventDefault();
     this.setState({ loading: true });
     const { amount } = this.state;
-    const { userId, userEmail, auctionId } = this.props;
+    const { userId, userEmail, auction } = this.props;
+    const auctionId = auction.id;
     const data = { amount, userId, userEmail, auctionId };
     db.submitBid(data)
       .then(() => {
@@ -60,7 +60,9 @@ export default class SubmitBid extends React.Component<
       });
   };
   public render() {
-    const { minPrice, maxPrice } = this.props;
+    const {
+      auction: { currentMaxBid, startingBid }
+    } = this.props;
     const { error, loading, amount } = this.state;
 
     return (
@@ -70,10 +72,10 @@ export default class SubmitBid extends React.Component<
           type="number"
           name="amount"
           required
-          value={amount || minPrice || 1}
+          value={amount || currentMaxBid || 1}
           onChange={this.onChange}
-          min={minPrice}
-          max={maxPrice}
+          min={currentMaxBid}
+          max={startingBid}
           step="0.01"
           maxLength={9}
         />

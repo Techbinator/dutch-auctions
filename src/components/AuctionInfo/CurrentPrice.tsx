@@ -1,34 +1,31 @@
 import React from "react";
 import TableData from "../TableData";
+import {
+  calculatePriceAndStatus,
+  IAuctionPriceAndStatus
+} from "../../helpers/auction";
+import { IAuction } from "../../types/auction.type";
 
 interface ICurrentPriceProps {
-  endDate: number;
-  startingBid: number;
-  currentMaxBid: number;
-  endAuction: () => void;
+  auction: IAuction;
 }
-
-interface ICurrentPriceState {
-  currentPrice: number;
-}
-
-type TCalculateCurrentPrice = () => number;
-
 export default class CurrentPrice extends React.Component<
   ICurrentPriceProps,
-  ICurrentPriceState
+  IAuctionPriceAndStatus
 > {
   constructor(props: ICurrentPriceProps) {
     super(props);
     this.state = {
-      currentPrice: this.calculateCurrentPrice()
+      ...calculatePriceAndStatus(props.auction)
     };
   }
 
   intervalID: any;
 
   componentDidMount() {
-    this.intervalID = setInterval(() => this.tick(), 1000);
+    if (!this.state.ended) {
+      this.intervalID = setInterval(() => this.tick(), 1000);
+    }
   }
 
   componentWillUnmount() {
@@ -36,52 +33,17 @@ export default class CurrentPrice extends React.Component<
   }
 
   tick() {
+    const priceAndStatus = calculatePriceAndStatus(this.props.auction);
+    if (priceAndStatus.ended) {
+      clearInterval(this.intervalID);
+    }
+
     this.setState({
-      currentPrice: this.calculateCurrentPrice()
+      ...priceAndStatus
     });
   }
 
-  finishAuction = () => {
-    clearInterval(this.intervalID);
-    this.props.endAuction();
-  };
-
-  calculateCurrentPrice: TCalculateCurrentPrice = () => {
-    const { endDate, startingBid, currentMaxBid } = this.props;
-    const now = new Date();
-    const diff = now.getTime() - endDate;
-
-    const secUntilAuctionEnd = Math.abs(Math.floor(diff / 1000));
-
-    //if auction ended
-    const isAuctionEnded = diff > 0;
-    if (isAuctionEnded) {
-      this.finishAuction();
-
-      const isABidSubmited = currentMaxBid >= 1;
-      if (isABidSubmited) return currentMaxBid;
-      return 1;
-    }
-
-    //The price will decrease every minute by 1⁄5 of the start price
-    for (let i = 1; i < 6; i++) {
-      const passedSeconds = i * 60;
-      const isUnderTheTimeInterval = secUntilAuctionEnd < passedSeconds;
-      if (isUnderTheTimeInterval) {
-        const isUnderAMinute = i === 1;
-        const value = isUnderAMinute ? 1 : (startingBid * i) / 5;
-        const isBidEqualOrOverMin = currentMaxBid >= value;
-        if (isBidEqualOrOverMin) {
-          this.finishAuction();
-          return currentMaxBid;
-        }
-        return value;
-      }
-    }
-    return 1;
-  };
-
   render() {
-    return <TableData value={`${this.state.currentPrice} CHF`} title="Price" />;
+    return <TableData value={`${this.state.price} CHF`} title="Price" />;
   }
 }

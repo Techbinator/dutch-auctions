@@ -53,7 +53,7 @@ class AuctionList extends React.Component<
         <div className="auctionsList">
           {currentUserAuctions && <NewAuction authUser={authUser} />}
           {auctions.map((auction: IAuction) => (
-            <AuctionListItem key={auction.id} {...auction} />
+            <AuctionListItem key={auction.id} auction={auction} />
           ))}
         </div>
       </>
