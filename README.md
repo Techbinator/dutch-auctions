@@ -7,9 +7,9 @@
 - [ ] Use server value for dates
 - [ ] Pagination
 - [ ] Add as close to possible to 100% test coverage(now it is around 50% but it shows most used test cases).
-- [ ] Env
-- [ ] Docker
-- [ ] Firebase is good for prototyping but not good for large scale apps(no != in queries example)
+- [ ] git ignore .env
+- [ ] Docker / deploy
+- [ ] IMHO, Firebase is good for prototyping but not good for large scale apps(no != in queries example) so i would try a different approach with my own be server.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
