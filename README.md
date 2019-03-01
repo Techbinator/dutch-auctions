@@ -1,3 +1,16 @@
+# Dutch auction
+
+## TODO in order to improve the app:
+
+- [ ] Cloud functions for security
+- [ ] Helmet
+- [ ] Use server value for dates
+- [ ] Pagination
+- [ ] Add as close to possible to 100% test coverage(now it is around 50% but it shows most used test cases).
+- [ ] Env
+- [ ] Docker
+- [ ] Firebase is good for prototyping but not good for large scale apps(no != in queries example)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
