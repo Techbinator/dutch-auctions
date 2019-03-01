@@ -1,0 +1,22 @@
+[
+  {
+    "id": "37gc2mvSPYSXfSqTNlE34qL8Qusssse2",
+    "currentMaxBid": 7.53,
+    "endDate": 1551426376312,
+    "ownerEmail": "tst@test.com",
+    "ownerId": "37gc2mvSPYSXfSqTNlE34qL8Que2",
+    "startDate": 1551426076312,
+    "startingBid": 10,
+    "title": "test"
+  },
+  {
+    "id": "37gc2mvSPYSXfSsqTNlE34qL8Qusssse2",
+    "currentMaxBid": 5.53,
+    "endDate": 1551426376312,
+    "ownerEmail": "tst@test.com",
+    "ownerId": "37gc2mvSPYSXfSqTNlE34qL8Que2dd",
+    "startDate": 1551426076312,
+    "startingBid": 10,
+    "title": "test1"
+  }
+]

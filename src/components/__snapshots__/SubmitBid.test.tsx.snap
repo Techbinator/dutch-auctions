@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubmitBid component should render snapshot with default values 1`] = `
+<form
+  className="price"
+  onSubmit={[Function]}
+>
+  <input
+    disabled={true}
+    max={7.53}
+    maxLength={9}
+    min={7.53}
+    name="amount"
+    onChange={[Function]}
+    required={true}
+    step="0.01"
+    type="number"
+    value={7.53}
+  />
+  <_default
+    disabled={true}
+    text="BID"
+    type="primary"
+  />
+</form>
+`;

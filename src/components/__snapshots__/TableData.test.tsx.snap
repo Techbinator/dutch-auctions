@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableData component should render snapshot with default values 1`] = `
+<div
+  className="table-data"
+>
+  <span>
+    Test title
+  </span>
+  <span>
+    Test value
+  </span>
+</div>
+`;

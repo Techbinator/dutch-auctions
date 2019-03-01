@@ -1,0 +1,468 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should render snapshot with default values 1`] = `
+<WithAuthentication>
+  <App
+    authUser={null}
+  >
+    <BrowserRouter>
+      <Router
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+      >
+        <_default
+          isLogedIn={false}
+        >
+          <withRouter(Header)
+            isLogedIn={false}
+          >
+            <Route>
+              <Header
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                isLogedIn={false}
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <header
+                  className="header"
+                >
+                  <div
+                    className="logo"
+                  >
+                    dutch
+                    <span>
+                      .auction
+                    </span>
+                  </div>
+                  <div
+                    className="navbar-toggle"
+                    onClick={[Function]}
+                  >
+                    <FontAwesomeIcon
+                      border={false}
+                      className=""
+                      fixedWidth={false}
+                      flip={null}
+                      icon={
+                        Object {
+                          "icon": Array [
+                            448,
+                            512,
+                            Array [],
+                            "f0c9",
+                            "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z",
+                          ],
+                          "iconName": "bars",
+                          "prefix": "fas",
+                        }
+                      }
+                      inverse={false}
+                      listItem={false}
+                      mask={null}
+                      pull={null}
+                      pulse={false}
+                      rotation={null}
+                      size={null}
+                      spin={false}
+                      symbol={false}
+                      title=""
+                      transform={null}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="svg-inline--fa fa-bars fa-w-14 "
+                        data-icon="bars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                          fill="currentColor"
+                          style={Object {}}
+                        />
+                      </svg>
+                    </FontAwesomeIcon>
+                  </div>
+                  <_default
+                    isLogedIn={false}
+                    onLogOutClick={[Function]}
+                    showMenu={false}
+                  >
+                    <nav
+                      className=""
+                    >
+                      <NavLink
+                        activeClassName="active"
+                        aria-current="page"
+                        exact={true}
+                        to="/login"
+                      >
+                        <Route
+                          exact={true}
+                          path="\\\\/login"
+                        >
+                          <Link
+                            aria-current={null}
+                            replace={false}
+                            to="/login"
+                          >
+                            <a
+                              aria-current={null}
+                              href="/login"
+                              onClick={[Function]}
+                            >
+                              <FontAwesomeIcon
+                                border={false}
+                                className=""
+                                fixedWidth={false}
+                                flip={null}
+                                icon={
+                                  Object {
+                                    "icon": Array [
+                                      512,
+                                      512,
+                                      Array [],
+                                      "f2f6",
+                                      "M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z",
+                                    ],
+                                    "iconName": "sign-in-alt",
+                                    "prefix": "fas",
+                                  }
+                                }
+                                inverse={false}
+                                listItem={false}
+                                mask={null}
+                                pull={null}
+                                pulse={false}
+                                rotation={null}
+                                size={null}
+                                spin={false}
+                                symbol={false}
+                                title=""
+                                transform={null}
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  className="svg-inline--fa fa-sign-in-alt fa-w-16 "
+                                  data-icon="sign-in-alt"
+                                  data-prefix="fas"
+                                  focusable="false"
+                                  role="img"
+                                  style={Object {}}
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"
+                                    fill="currentColor"
+                                    style={Object {}}
+                                  />
+                                </svg>
+                              </FontAwesomeIcon>
+                              Log In
+                            </a>
+                          </Link>
+                        </Route>
+                      </NavLink>
+                      <NavLink
+                        activeClassName="active"
+                        aria-current="page"
+                        exact={true}
+                        to="/register"
+                      >
+                        <Route
+                          exact={true}
+                          path="\\\\/register"
+                        >
+                          <Link
+                            aria-current={null}
+                            replace={false}
+                            to="/register"
+                          >
+                            <a
+                              aria-current={null}
+                              href="/register"
+                              onClick={[Function]}
+                            >
+                              <FontAwesomeIcon
+                                border={false}
+                                className=""
+                                fixedWidth={false}
+                                flip={null}
+                                icon={
+                                  Object {
+                                    "icon": Array [
+                                      512,
+                                      512,
+                                      Array [],
+                                      "f25d",
+                                      "M285.363 207.475c0 18.6-9.831 28.431-28.431 28.431h-29.876v-56.14h23.378c28.668 0 34.929 8.773 34.929 27.709zM504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM363.411 360.414c-46.729-84.825-43.299-78.636-44.702-80.98 23.432-15.172 37.945-42.979 37.945-74.486 0-54.244-31.5-89.252-105.498-89.252h-70.667c-13.255 0-24 10.745-24 24V372c0 13.255 10.745 24 24 24h22.567c13.255 0 24-10.745 24-24v-71.663h25.556l44.129 82.937a24.001 24.001 0 0 0 21.188 12.727h24.464c18.261-.001 29.829-19.591 21.018-35.587z",
+                                    ],
+                                    "iconName": "registered",
+                                    "prefix": "fas",
+                                  }
+                                }
+                                inverse={false}
+                                listItem={false}
+                                mask={null}
+                                pull={null}
+                                pulse={false}
+                                rotation={null}
+                                size={null}
+                                spin={false}
+                                symbol={false}
+                                title=""
+                                transform={null}
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  className="svg-inline--fa fa-registered fa-w-16 "
+                                  data-icon="registered"
+                                  data-prefix="fas"
+                                  focusable="false"
+                                  role="img"
+                                  style={Object {}}
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M285.363 207.475c0 18.6-9.831 28.431-28.431 28.431h-29.876v-56.14h23.378c28.668 0 34.929 8.773 34.929 27.709zM504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM363.411 360.414c-46.729-84.825-43.299-78.636-44.702-80.98 23.432-15.172 37.945-42.979 37.945-74.486 0-54.244-31.5-89.252-105.498-89.252h-70.667c-13.255 0-24 10.745-24 24V372c0 13.255 10.745 24 24 24h22.567c13.255 0 24-10.745 24-24v-71.663h25.556l44.129 82.937a24.001 24.001 0 0 0 21.188 12.727h24.464c18.261-.001 29.829-19.591 21.018-35.587z"
+                                    fill="currentColor"
+                                    style={Object {}}
+                                  />
+                                </svg>
+                              </FontAwesomeIcon>
+                              Register
+                            </a>
+                          </Link>
+                        </Route>
+                      </NavLink>
+                    </nav>
+                  </_default>
+                </header>
+              </Header>
+            </Route>
+          </withRouter(Header)>
+          <div
+            className="box-shadow auth-container"
+          >
+            <Switch>
+              <Route
+                component={[Function]}
+                computedMatch={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+                exact={true}
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                path="/"
+              >
+                <withRouter(WithAuthorization)
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                >
+                  <Route>
+                    <WithAuthorization
+                      history={
+                        Object {
+                          "action": "POP",
+                          "block": [Function],
+                          "createHref": [Function],
+                          "go": [Function],
+                          "goBack": [Function],
+                          "goForward": [Function],
+                          "length": 1,
+                          "listen": [Function],
+                          "location": Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
+                          },
+                          "push": [Function],
+                          "replace": [Function],
+                        }
+                      }
+                      location={
+                        Object {
+                          "hash": "",
+                          "pathname": "/",
+                          "search": "",
+                          "state": undefined,
+                        }
+                      }
+                      match={
+                        Object {
+                          "isExact": true,
+                          "params": Object {},
+                          "path": "/",
+                          "url": "/",
+                        }
+                      }
+                    >
+                      <_default>
+                        <div
+                          className="loading-container"
+                        >
+                          <FontAwesomeIcon
+                            border={false}
+                            className=""
+                            fixedWidth={false}
+                            flip={null}
+                            icon={
+                              Object {
+                                "icon": Array [
+                                  512,
+                                  512,
+                                  Array [],
+                                  "f110",
+                                  "M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z",
+                                ],
+                                "iconName": "spinner",
+                                "prefix": "fas",
+                              }
+                            }
+                            inverse={false}
+                            listItem={false}
+                            mask={null}
+                            pull={null}
+                            pulse={false}
+                            rotation={null}
+                            size="10x"
+                            spin={true}
+                            symbol={false}
+                            title=""
+                            transform={null}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              className="svg-inline--fa fa-spinner fa-w-16 fa-spin fa-10x "
+                              data-icon="spinner"
+                              data-prefix="fas"
+                              focusable="false"
+                              role="img"
+                              style={Object {}}
+                              viewBox="0 0 512 512"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+                                fill="currentColor"
+                                style={Object {}}
+                              />
+                            </svg>
+                          </FontAwesomeIcon>
+                        </div>
+                      </_default>
+                    </WithAuthorization>
+                  </Route>
+                </withRouter(WithAuthorization)>
+              </Route>
+            </Switch>
+          </div>
+        </_default>
+      </Router>
+    </BrowserRouter>
+  </App>
+</WithAuthentication>
+`;

@@ -13,7 +13,7 @@ interface IHeaderState {
   showMenu: boolean;
 }
 
-class Header extends React.Component<
+export class Header extends React.Component<
   RouteComponentProps & IRegisterProps,
   IHeaderState
 > {

@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { shallow, mount } from "enzyme";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("App component", () => {
+  it("should render snapshot with default values", () => {
+    const wrapper = mount(<App />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

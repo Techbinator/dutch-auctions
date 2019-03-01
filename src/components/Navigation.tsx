@@ -28,7 +28,7 @@ export default ({ showMenu, onLogOutClick, isLogedIn }: INavigation) => {
           <FontAwesomeIcon icon={faUserCircle} />
           My auctions
         </NavLink>
-        <a href="#" onClick={onLogOutClick}>
+        <a className="logout" href="#" onClick={onLogOutClick}>
           <FontAwesomeIcon icon={faSignOutAlt} />
           Log out
         </a>

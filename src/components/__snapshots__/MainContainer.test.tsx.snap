@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContainer component should render snapshot with default values 1`] = `
+<Fragment>
+  <withRouter(Header)
+    isLogedIn={true}
+  />
+  <div
+    className="box-shadow container"
+  >
+    <div>
+      children
+    </div>
+  </div>
+</Fragment>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should render disabled button with default values 1`] = `
+<button
+  className="secondary"
+  disabled={true}
+>
+  secondary
+</button>
+`;
+
+exports[`Button component should render snapshot with default values 1`] = `
+<button
+  className="primary"
+  disabled={false}
+>
+  test
+</button>
+`;
