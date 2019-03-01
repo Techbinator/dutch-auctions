@@ -13,7 +13,7 @@ const Bid = ({ bid, isFirst }: { bid: IBid; isFirst: boolean }) => {
         {isFirst && <FontAwesomeIcon icon={faTrophy} />}
         {userEmail}
       </span>
-      <span>{amount}</span>
+      <span>{amount.toFixed(2)} CHF</span>
       <span>{formatedCreatedAt}</span>
     </div>
   );

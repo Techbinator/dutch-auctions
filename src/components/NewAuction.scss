@@ -1,5 +1,5 @@
 @import "../config/scss/variables.scss";
-@import "./AuctionListItem.scss";
+@import "../pages/AuctionList.scss";
 .new-auction {
   @extend .auction-list-item;
   .icon-container {

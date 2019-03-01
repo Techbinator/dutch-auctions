@@ -40,7 +40,13 @@ export const withAuthorization = (checkIsLogedin: boolean) => (
 
       return (
         <AuthUserContext.Consumer>
-          {authUser => <Component authUser={authUser} {...this.props} />}
+          {authUser => {
+            //while it checks if the user is loged in
+            if (checkIsLogedin && !authUser) {
+              return <Loading />;
+            }
+            return <Component authUser={authUser} {...this.props} />;
+          }}
         </AuthUserContext.Consumer>
       );
     }

@@ -17,6 +17,7 @@ interface IAuctionProps {
 interface IAuctionState {
   auction: IAuction | null;
   bids: IBid[];
+  auctionEnded: boolean;
 }
 
 class Auction extends React.Component<
@@ -24,7 +25,8 @@ class Auction extends React.Component<
 > {
   state: IAuctionState = {
     auction: null,
-    bids: []
+    bids: [],
+    auctionEnded: false
   };
 
   _isMounted: boolean = false;
@@ -35,7 +37,9 @@ class Auction extends React.Component<
       if (doc.exists) {
         const auctionData = doc.data() as IAuction;
         const auction = { ...auctionData, id: doc.id };
-        this.setState({ auction });
+        if (this._isMounted) {
+          this.setState({ auction });
+        }
         return;
       }
       //in case of wrong auction id
@@ -59,6 +63,10 @@ class Auction extends React.Component<
     });
   };
 
+  endAuction = () => {
+    this.setState({ auctionEnded: true });
+  };
+
   componentDidMount = () => {
     this._isMounted = true;
     this.getAuctionData();
@@ -70,7 +78,7 @@ class Auction extends React.Component<
   }
 
   render() {
-    const { auction, bids } = this.state;
+    const { auction, bids, auctionEnded } = this.state;
     const { authUser } = this.props;
     return (
       <div className="auction">
@@ -79,12 +87,17 @@ class Auction extends React.Component<
             <div className="dummy-image" />
           </div>
           <div className="right-container">
-            {auction ? <AuctionInfo auction={auction} /> : "Loading..."}
+            {auction ? (
+              <AuctionInfo noticeParent={this.endAuction} auction={auction} />
+            ) : (
+              "Loading..."
+            )}
             {auction ? (
               <SubmitBid
                 userId={authUser.uid}
                 userEmail={authUser.email}
                 auction={auction}
+                auctionEnded={auctionEnded}
               />
             ) : (
               "Loading..."

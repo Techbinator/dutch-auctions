@@ -4,11 +4,13 @@ import Button from "../components/Button";
 
 import "./SubmitBid.scss";
 import { IAuction } from "../types/auction.type";
+import { calculatePriceAndStatus } from "../helpers/auction";
 
 interface SubmitBidProps {
   userId: string;
   userEmail?: string | null;
   auction: IAuction;
+  auctionEnded: boolean;
 }
 
 interface ISubmitBidState {
@@ -40,7 +42,7 @@ export default class SubmitBid extends React.Component<
   onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     this.setState({ loading: true });
-    const { amount } = this.state;
+    const amount = this.state.amount ? this.state.amount : 1;
     const { userId, userEmail, auction } = this.props;
     const auctionId = auction.id;
     const data = { amount, userId, userEmail, auctionId };
@@ -59,27 +61,42 @@ export default class SubmitBid extends React.Component<
         this.setState({ error: error.message, loading: false });
       });
   };
+
+  isSameUser = () => {
+    return this.props.auction.ownerId === this.props.userId;
+  };
+
   public render() {
     const {
-      auction: { currentMaxBid, startingBid }
+      auction: { currentMaxBid },
+      auctionEnded
     } = this.props;
+    const priceAndStatus = calculatePriceAndStatus(this.props.auction);
+
     const { error, loading, amount } = this.state;
+    const disableInput =
+      this.isSameUser() || priceAndStatus.ended || auctionEnded;
 
     return (
       <form onSubmit={this.onSubmit} className="price">
         {error && <p className="error">{error}</p>}
         <input
+          disabled={disableInput}
           type="number"
           name="amount"
           required
           value={amount || currentMaxBid || 1}
           onChange={this.onChange}
           min={currentMaxBid}
-          max={startingBid}
+          max={priceAndStatus.price}
           step="0.01"
           maxLength={9}
         />
-        <Button type="primary" text={loading ? "Loading..." : "BID"} />
+        <Button
+          disabled={disableInput}
+          type="primary"
+          text={loading ? "Loading..." : "BID"}
+        />
       </form>
     );
   }

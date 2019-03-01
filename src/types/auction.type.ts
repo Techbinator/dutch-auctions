@@ -4,6 +4,7 @@ export interface IAuction {
   startDate: number;
   endDate: number;
   ownerId: string;
+  ownerEmail: string;
   startingBid: number;
   currentMaxBid: number;
 }

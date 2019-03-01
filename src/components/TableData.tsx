@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import "./TableData.scss";
 interface ITableData {
   title: string | ReactNode;
-  value: string | ReactNode;
+  value: string | ReactNode | number;
 }
 export default ({ title, value }: ITableData) => (
   <div className="table-data">

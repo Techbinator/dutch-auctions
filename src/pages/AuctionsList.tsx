@@ -1,7 +1,8 @@
 import React from "react";
 import { User } from "firebase";
+import { NavLink } from "react-router-dom";
 
-import AuctionListItem from "../components/AuctionListItem";
+import AuctionInfo from "../components/AuctionInfo";
 import NewAuction from "../components/NewAuction";
 import { withAuthorization } from "../firebase/withAuthorization";
 import { db } from "../firebase";
@@ -26,12 +27,15 @@ class AuctionList extends React.Component<
   componentDidMount = () => {
     this._isMounted = true;
     const { authUser, currentUserAuctions } = this.props;
-
+    // if (authUser) {
     db.getAuctions({ authUser, currentUserAuctions }).onSnapshot(snapshot => {
       const auctions: IAuction[] = [];
 
       snapshot.forEach(doc => {
         const auctionData = doc.data() as IAuction;
+        //since firestore does not support != we filter out users auctions on all auction page
+        if (!currentUserAuctions && authUser.uid == auctionData.ownerId)
+          return null;
         auctions.push({ id: doc.id, ...auctionData });
       });
 
@@ -49,14 +53,20 @@ class AuctionList extends React.Component<
     const { auctions } = this.state;
     const { authUser, currentUserAuctions } = this.props;
     return (
-      <>
-        <div className="auctionsList">
-          {currentUserAuctions && <NewAuction authUser={authUser} />}
-          {auctions.map((auction: IAuction) => (
-            <AuctionListItem key={auction.id} auction={auction} />
-          ))}
-        </div>
-      </>
+      <div className="auctionsList">
+        {currentUserAuctions && <NewAuction authUser={authUser} />}
+        {auctions.map((auction: IAuction) => (
+          <NavLink
+            key={auction.id}
+            className="auction-list-item box-shadow-hover"
+            exact
+            to={`auction/${auction.id}`}
+          >
+            <div className="dummy-image" />
+            <AuctionInfo auction={auction} />
+          </NavLink>
+        ))}
+      </div>
     );
   }
 }

@@ -3,6 +3,7 @@ import { IAuction } from "../types/auction.type";
 export interface IAuctionPriceAndStatus {
   ended: boolean;
   price: number;
+  secUntilAuctionEnds: number;
 }
 
 export function calculatePriceAndStatus(
@@ -12,7 +13,7 @@ export function calculatePriceAndStatus(
   const now = new Date();
   const diff = now.getTime() - endDate;
 
-  const secUntilAuctionEnd = Math.abs(Math.floor(diff / 1000));
+  const secUntilAuctionEnds = Math.abs(Math.floor(diff / 1000));
 
   //if auction ended
   const isAuctionEnded = diff > 0;
@@ -20,14 +21,15 @@ export function calculatePriceAndStatus(
     const isABidSubmited = currentMaxBid >= 1;
     return {
       ended: true,
-      price: isABidSubmited ? currentMaxBid : 1
+      price: isABidSubmited ? currentMaxBid : 1,
+      secUntilAuctionEnds
     };
   }
 
   //The price will decrease every minute by 1⁄5 of the start price
   for (let i = 1; i < 6; i++) {
     const passedSeconds = i * 60;
-    const isUnderTheTimeInterval = secUntilAuctionEnd < passedSeconds;
+    const isUnderTheTimeInterval = secUntilAuctionEnds < passedSeconds;
     if (isUnderTheTimeInterval) {
       const isUnderAMinute = i === 1;
       const value = isUnderAMinute ? 1 : (startingBid * i) / 5;
@@ -35,13 +37,15 @@ export function calculatePriceAndStatus(
 
       return {
         ended: isBidEqualOrOverMin,
-        price: isBidEqualOrOverMin ? currentMaxBid : value
+        price: isBidEqualOrOverMin ? currentMaxBid : value,
+        secUntilAuctionEnds
       };
     }
   }
 
   return {
     ended: false,
-    price: 1
+    price: 1,
+    secUntilAuctionEnds
   };
 }

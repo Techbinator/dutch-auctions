@@ -19,7 +19,7 @@ interface INewAuctionState {
 
 const INITIAL_STATE = {
   title: "",
-  startingBid: 1,
+  startingBid: 5,
   error: null,
   loading: false
 };
@@ -36,7 +36,12 @@ export default class NewAuction extends React.Component<
     const { title, startingBid } = this.state;
     const { authUser } = this.props;
 
-    db.createNewAuction({ title, startingBid, ownerId: authUser.uid })
+    db.createNewAuction({
+      title,
+      startingBid,
+      ownerId: authUser.uid,
+      ownerEmail: authUser.email
+    })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
       })
@@ -77,13 +82,13 @@ export default class NewAuction extends React.Component<
           />
           <input
             name="startingBid"
-            value={startingBid}
+            value={startingBid || 1}
             type="number"
             onChange={this.onChange}
             placeholder="Price"
-            min="1"
+            min="5"
             max="10000000"
-            step="0.01"
+            step="1"
           />
           <Button
             type="primary"

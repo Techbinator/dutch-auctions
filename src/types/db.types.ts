@@ -4,6 +4,7 @@ export interface ICreateNewAuction {
   title: string;
   startingBid: number;
   ownerId: string;
+  ownerEmail: string | null;
 }
 export interface IGetAuctions {
   authUser: User;

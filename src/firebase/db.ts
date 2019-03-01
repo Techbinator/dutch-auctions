@@ -44,12 +44,10 @@ export const createNewAuction = (data: ICreateNewAuction) => {
   const endDate = new Date();
   endDate.setMinutes(endDate.getMinutes() + 5);
   const auction = {
-    title: data.title,
     startDate: startDate.getTime(),
     endDate: endDate.getTime(),
-    startingBid: data.startingBid,
-    ownerId: data.ownerId,
-    currentMaxBid: 0
+    currentMaxBid: 0,
+    ...data
   };
   return db.collection(AUCTIONS_COLLECTION).add(auction);
 };

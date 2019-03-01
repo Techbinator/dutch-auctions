@@ -5,7 +5,9 @@
   }
 
   button:disabled,
-  button[disabled] {
+  button[disabled],
+  input:disabled,
+  input[disabled] {
     background: #ccc;
   }
 }

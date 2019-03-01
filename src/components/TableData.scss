@@ -3,6 +3,9 @@
     width: 50%;
     display: inline-block;
     font-size: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     &:first-child {
       color: #999;
     }
